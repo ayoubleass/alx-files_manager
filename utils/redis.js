@@ -1,10 +1,11 @@
 import { createClient } from 'redis';
+
 const { promisify } = require('util');
 
 class RedisClient {
   constructor() {
     this.client = createClient({});
-    this.client.on('error' , (err) => {
+    this.client.on('error', (err) => {
       console.error(`Redis client not connected to the server: ${err}`);
     });
     this.getAsync = promisify(this.client.get).bind(this.client);
@@ -30,4 +31,3 @@ class RedisClient {
 
 const redisClient = new RedisClient();
 export default redisClient;
-

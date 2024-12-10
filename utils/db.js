@@ -12,14 +12,14 @@ class DBClient {
     this.client.connect()
       .then((client) => {
         this.connected = true;
-        this.db = client.db(database)})
-      .catch((err) => {
-	this.connected = false;
+        this.db = client.db(database);
+      }).catch((err) => {
+        this.connected = false;
         console.error('Failed to connect to MongoDB', err);
       });
   }
 
-  isAlive () {
+  isAlive() {
     return this.connected;
   }
 
