@@ -164,7 +164,7 @@ class FilesController {
     });
   }
 
-  static async unputPublish(req, res) {
+  static async putUnpublish(req, res) {
     const connToken = req.header('X-Token');
     const key = `auth_${connToken}`;
     const userId = await redisClient.get(key);
@@ -186,7 +186,6 @@ class FilesController {
       parentId: file.parentId,
     });
   }
-
 }
 
 export default FilesController;
